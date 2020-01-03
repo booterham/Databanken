@@ -1,0 +1,4 @@
+select nummerplaat
+from (select r.nummerplaat, r.email, count(r.email)
+    from registratieformulier r group by r.nummerplaat, r.email) as dubbeleweg
+group by nummerplaat having count(nummerplaat) = 1;

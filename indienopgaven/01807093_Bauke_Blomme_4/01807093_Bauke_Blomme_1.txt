@@ -1,0 +1,6 @@
+select nr as ondernemingsnr, naam from (select nummerplaat, wagen.ondernemingsnr as nr, count(nummerplaat) as yeet from registratieformulier left join
+    wagen using(nummerplaat)
+    inner join filiaal f on wagen.ondernemingsnr = f.ondernemingsnr
+    where merk like 'Opel' and model like 'Astra'
+        group by nummerplaat, wagen.ondernemingsnr) as counts inner join filiaal on counts.nr = filiaal.ondernemingsnr
+        where yeet > 10;

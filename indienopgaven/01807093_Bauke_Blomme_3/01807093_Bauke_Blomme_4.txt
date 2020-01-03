@@ -1,0 +1,12 @@
+SELECT ondernemingsnr, email, voornaam, achternaam
+FROM Filiaal f1
+INNER JOIN Wagen w1 USING(ondernemingsnr)
+INNER JOIN Registratieformulier r1 USING(nummerplaat)
+INNER JOIN Persoon p1 USING(email)
+WHERE periode_begin <= ALL(
+    SELECT periode_begin
+    FROM Filiaal f2
+    INNER JOIN Wagen w2 USING(ondernemingsnr)
+    INNER JOIN Registratieformulier r2 USING(nummerplaat)
+    WHERE f1.ondernemingsnr = f2.ondernemingsnr
+);

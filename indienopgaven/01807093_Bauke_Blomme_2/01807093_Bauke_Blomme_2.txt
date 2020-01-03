@@ -1,0 +1,1 @@
+select pers.voornaam, pers.achternaam, fil.ondernemingsnr from persoon pers left join werknemer using(email) inner join filiaal fil on substr(fil.postcode,1,1) like substr(pers.postcode,1,1) where werknemer.email is null order by pers.achternaam, pers.voornaam;

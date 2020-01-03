@@ -1,0 +1,15 @@
+select distinct postcode,
+                plaatsnaam,
+                case
+                    when (woonplaats is false and bedrijfplaats is true) then 'bedrijfslocatie'
+                    when (woonplaats is true and bedrijfplaats is false) then 'woonplaats'
+                    when (bedrijfplaats is true and woonplaats is true) then 'beiden'
+                    else 'geen van beiden' end as "locatietype"
+from (select locatie.postcode,
+             locatie.plaatsnaam,
+             case when (p.plaatsnaam is null and p.postcode is null) then false else true end as woonplaats,
+             case when (f.plaatsnaam is null and f.postcode is null) then false else true end as bedrijfplaats
+      from locatie
+               left join filiaal f on locatie.postcode = f.postcode and locatie.plaatsnaam = f.plaatsnaam
+               left join persoon p on locatie.postcode = p.postcode and locatie.plaatsnaam = p.plaatsnaam) as ok
+order by "locatietype";

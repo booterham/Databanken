@@ -1,0 +1,12 @@
+SELECT r1.* FROM Registratieformulier r1 INNER JOIN Persoon p USING(email) INNER JOIN Wagen w USING(nummerplaat) INNER JOIN Constructeur c1 USING(model) INNER JOIN type t1 ON(c1.type = t1.naam)
+WHERE 250/4 >= (SELECT
+					CASE WHEN (c2.merk = 'Volkswagen' AND c2.model = 'Polo') OR (c2.merk = 'Renault' AND c2.model = 'Megane') THEN t2.dagtarief*0.9
+					ELSE t2.dagtarief*1
+					END AS dagtarief
+				FROM Constructeur c2 INNER JOIN Type t2 ON(c2.type = t2.naam)
+				WHERE c2.merk = c1.merk AND c2.model = c1.model
+			   )
+AND p.email NOT IN(
+					SELECT email FROM Werknemer
+				  )
+ORDER BY r1.periode_begin;

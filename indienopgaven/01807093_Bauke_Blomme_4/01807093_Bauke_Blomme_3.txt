@@ -1,0 +1,10 @@
+select distinct werknemersnr, email, voornaam, achternaam from
+       (select count(werknemersnr) as aantal, w.werknemersnr, p.email, p.voornaam, p.achternaam, wagen.model, wagen.merk
+    from registratieformulier
+        left join wagen using(nummerplaat)
+    inner join persoon p on registratieformulier.email = p.email
+    inner join werknemer w on p.email = w.email group by w.werknemersnr, p.email, p.voornaam, p.achternaam, wagen.model, wagen.merk) as groot where aantal = (select max(aantal) from (select count(werknemersnr) as aantal, w.werknemersnr, p.email, p.voornaam, p.achternaam, wagen.model, wagen.merk
+    from registratieformulier
+        left join wagen using(nummerplaat)
+    inner join persoon p on registratieformulier.email = p.email
+    inner join werknemer w on p.email = w.email group by w.werknemersnr, p.email, p.voornaam, p.achternaam, wagen.model, wagen.merk) as klein);

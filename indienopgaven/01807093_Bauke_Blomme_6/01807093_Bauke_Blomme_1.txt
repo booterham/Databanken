@@ -1,0 +1,11 @@
+select email, case when sum(bij_zelfde_bedrijf) = 0 then false else true end as validatie
+from (select persoon.email,
+             case when c.ondernemingsnr = w2.ondernemingsnr then '1'::int else '0'::int end as bij_zelfde_bedrijf
+      from persoon
+               inner join werknemer w
+                          on persoon.email = w.email
+               inner join registratieformulier r on persoon.email = r.email
+
+               inner join contract c on w.werknemersnr = c.werknemersnr
+               inner join wagen w2 on r.nummerplaat = w2.nummerplaat) as alias
+group by email;

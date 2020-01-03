@@ -1,0 +1,6 @@
+select distinct twee.voornaam, twee.achternaam, twee.email 
+from 
+(select postcode, plaatsnaam from persoon group by postcode, plaatsnaam having count(postcode) = 1) as een 
+inner join 
+(select postcode, voornaam, achternaam, email from persoon) as twee 
+using(postcode);

@@ -1,0 +1,4 @@
+select email, voornaam, achternaam, case when hoeveel = 0 then 'Potentieel toekomstige werknemer' when hoeveel = 1 then 'Trouwe werknemer' else 'Bedrijfshopper' end as werknemersstatus
+from (select r.email, voornaam, achternaam, count(r.email) as hoeveel
+    from registratieformulier r left join persoon on persoon.email = r.email
+    group by r.email, voornaam, achternaam) as skeet;
