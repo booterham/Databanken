@@ -1,0 +1,88 @@
+Structuur (gewicht 1/3)
+
+
+
+​Score: 1.3/3
+
+
+
+Feedback:
+
+Alle nodige attributen zijn aanwezig in de correcte tabel, en de relaties tussen deze tabellen worden voorgesteld door correcte vreemde sleutels:
+
+aankopen gebeuren inderdaad door een bepaalde klant, maar je dient niet alleen te weten in welke resto deze aankoop is gebeurd, maar ook binnen welk openingstijdstip. Daarnaast zijn het niet producten, maar productsoorten die worden aangekocht én aangeboden. Verder moet de tabel "aankoop" eigenlijk refereren naar de tabel "aanbod" die jullie aanmaakten. In jullie oplossing is het nu immers mogelijk dat producten worden aangekocht die in een resto helemaal niet worden aangeboden! Tot slot werd er gevraagd dat de totaalprijs van een aankoop makkelijk moest kunnen worden berekend, maar dit is in jullie ontwerp niet mogelijk. 2 (6)
+# geen opmerkingen, ze hebben gelijk
+
+Alle attributen hebben een correct datatype: klantcode is correcter en efficiënter om als numeriek datatype op te slaan. 0 (1)
+# tijdens een oefeningenles heb ik dit nagevraagd en de assistent heeft gezegd dat varchar als datatype voor klantid in orde was
+
+Elke tabel heeft een correcte primaire sleutel: het zijn productsoorten die worden aangeboden in een restaurant, niet producten. 1 (2)
+# oke true, we hadden soort als productsoort moeten gebruiken in aanbod
+
+Alternatieve sleutels worden beperkt door uniciteit en ‘not-null’: het adres van een restaurant is een alternatieve sleutel, maar uniciteit en NOT NULL hiervan wordt niet afgedwongen. 0 (1)
+# oke whatever ze zullen wel gelijk hebben
+Er is niet onnodig/overbodig gebruik gemaakt van IDs: goed! 2 (2)
+
+
+Importeren van data (gewicht 1/9)
+
+
+
+Score: 1/7
+
+
+
+Feedback:
+
+-Bij het uitvoeren van het script om data te importeren kregen wij de foutmelding dat de super-relaties super_aanbod en super_aankoop niet bestaan. Dit zijn inderdaad de relaties van waaruit jullie de data verspreiden. De opgave vermeldde echter expliciet en meermaals dat jullie gebruik moesten maken van de 2 .sql-scripts die wij op Ufora hadden geplaatst om de super-relaties aan te maken (super_offer en super_purchase) en van daaruit jullie data moesten verspreiden. Een andere optie was om de code voor de aanmaak van jullie eigen super-relaties mee te zenden zodat wij konden weten hoe jullie super-relaties (kolomnamen, datatypes,...) gedefinieerd waren. Lees in het vervolg de opgave nogmaals goed na vooraleer in te dienen!
+# ze hebben gelijk dat we de verkeerde super-relaties gebruikten, hopelijk willen ze de rest nog testen met de super-relaties die we in onze volgende mail meeleveren
+
+-Jullie hebben wel nog een punt gekregen omdat het script met de select-queries correct uitvoerde.
+# eentje is geentje
+
+
+
+Beperkingen (gewicht 2/9)
+
+
+
+Score: 0/10
+
+
+
+Feedback:
+
+-Het testen van de beperkingen was gebonden aan het correct kunnen importeren van de data (en aan het uitvoeren van de inserts). Jammer genoeg hebben wij dit dus ook niet kunnen testen.
+# hopelijk wel met eigen super-tabellen
+
+
+
+Extra punt (gewicht 1/3)
+
+
+
+​Score: 1/1
+
+
+
+Feedback:
+
+-Jullie waren beiden aanwezig in de herhalingsles SQL en hebben een niet-triviale oplossing ingediend.
+
+
+
+Berekening totaal:
+
+
+
+(1/3) * (1.3/3) + (1/9) * (1/7) + (2/9) * (0/10) + (1/3) * 1 = 49/100
+
+
+
+Succes met de examens,
+
+Yoram & Toon
+
+Jonathan Casters
+Fri 10 Jan 2020 14:37
+Beste assistenten We hadden graag wat meer duiding gehad bij de punten van ons project. We dachten dat deze toch wat hoger gingen liggen, aangezien we alles toch héél zorgvuldig hebben getest. Met vriendelijke groeten Jonathan Casters & Bauke Blomme Outlook

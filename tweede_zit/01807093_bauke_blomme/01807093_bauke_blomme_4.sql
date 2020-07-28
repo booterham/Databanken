@@ -1,0 +1,1 @@
+select * from resto where adres ~ '  9000 Gent$' and beschrijving notnull;
